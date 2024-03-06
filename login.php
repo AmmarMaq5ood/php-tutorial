@@ -45,7 +45,8 @@
                             alert('Login Successful');
                             window.location.href = "index.php";
                         } else {
-                            alert(data.message);
+                            console.log(data.message);
+                            $('#loginError').text(data.message + "!");
                         }
                     },
                     error: function (xhr, status, error) {
@@ -72,6 +73,9 @@
                 <label class="fw-bold" for="password" class="form-label">Password:</label>
                 <input type="password" class="form-control" id="password" name="password" required>
                 <div id="passwordError" class="text-danger"></div>
+            </div>
+            <div class="form-group py-2">
+                <div id="loginError" class="text-danger fw-bold"></div>
             </div>
             <button type="submit" class="btn btn-primary py-2">Login</button>
         </form>
