@@ -33,12 +33,9 @@
                 });
 
                 var imageGalleryInput = $('#image_gallery')[0].files;
-                console.log("image agllary::: ", $('#image_gallery'));
                 for (var i = 0; i < imageGalleryInput.length; i++) {
                     formData.append('image_gallery[]', imageGalleryInput[i]);
                 }
-
-                console.log("formdata: ", JSON.stringify(formData));
 
                 $.ajax({
                     type: form.attr('method'),
@@ -74,8 +71,6 @@
             });
         });
     </script>
-
-
     <style>
         .profile-img {
             width: 150px;
@@ -100,13 +95,11 @@
                     <?php echo $username; ?>
                 </h2>
                 <?php
-
                 if (!$row['profile_picture']) {
                     echo '<img style="width: 75px" class="rounded-circle" src="assets/user.webp" alt="Profile Picture" class="profile-img rounded-circle">';
                 } else {
                     echo '<img style="width: 75px" class="rounded-circle" src="uploads/' . $row['profile_picture'] . '" alt="Profile Picture" class="profile-img rounded-circle">';
                 }
-
                 ?>
                 <form id="updateProfileForm" method="post" action="update_profile.php" enctype="multipart/form-data">
                     <input type="hidden" name="original_username" value="<?php echo $username; ?>">
@@ -138,7 +131,6 @@
                         <input class="form-control" type="file" id="image_gallery" name="image_gallery[]" multiple>
                         <div class="bg-secondary-subtle rounded shadow-sm mt-2" id="imageGalleryPreview"></div>
                     </div>
-
                     <div class="form-group py-2">
                         <button type="submit" class="btn btn-primary py-2">Update Profile</button>
                     </div>
